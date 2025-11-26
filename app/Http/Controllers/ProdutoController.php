@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use Illuminate\Support\Facades\Cookie;
 
 class ProdutoController extends Controller
 {
     public function index()
     {
         $produtos = Produto::all();
-        return view('produtos.index', compact('produtos'));
+        $mensagem = request()->cookie('mensagem_visitante');
+        return view('produtos.index', compact('produtos', 'mensagem'));
     }
 
     public function criar()
@@ -38,8 +40,14 @@ class ProdutoController extends Controller
         Produto::create($dados);
 
         return redirect()->route('produtos.index')
-            ->with('success', 'Produto cadastrado com sucesso!');
+            ->withCookie(cookie(
+                'mensagem_visitante',
+                'Obrigado por cadastrar um produto!',
+                60
+    ));
+
     }
+
 
     public function edit($id)
     {

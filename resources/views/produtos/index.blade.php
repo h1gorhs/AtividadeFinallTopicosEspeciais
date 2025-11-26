@@ -30,5 +30,12 @@
     @endforeach
     </ul>
 
+    @if(isset($mensagem))
+        <p style="background:#e0f7fa;padding:10px;border-radius:5px">
+            {{ $mensagem }}
+        </p>
+    @endif
+
+
 </body>
 </html>

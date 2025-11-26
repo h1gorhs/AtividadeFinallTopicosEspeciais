@@ -10,6 +10,5 @@ Route::post('/produtos/salvar', [ProdutoController::class, 'salvar'])->name('pro
 Route::get('/produtos/{id}/edit', [ProdutoController::class, 'edit'])->name('produtos.edit');
 Route::put('/produtos/{id}', [ProdutoController::class, 'update'])->name('produtos.update');
 Route::delete('/produtos/{id}', [ProdutoController::class, 'destroy'])->name('produtos.destroy');
-
-Route::get('/categorias', [CategoriaController::class, 'index']);
-Route::post('/categorias', [CategoriaController::class, 'store']);
+Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
+Route::post('/categorias/salvar', [CategoriaController::class, 'store'])->name('categorias.salvar');
